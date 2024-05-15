@@ -1,11 +1,6 @@
-// TODO: remove
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:delulu/src/rust/frb_generated.dart';
-import 'package:delulu/chat.dart';
-
-import 'package:share_plus/share_plus.dart';
+import 'package:delulu/pages/search.dart';
 
 Future<void> main() async {
   await RustLib.init();
@@ -28,9 +23,8 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
         appBarTheme: AppBarTheme(
-          elevation: 0,
-          centerTitle: true,
-        ),
+            // elevation: 0,
+            ),
         navigationBarTheme: NavigationBarThemeData(
           height: 70,
           indicatorColor: Colors.transparent,
@@ -64,7 +58,7 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           headlineMedium: TextStyle(
-            fontSize: 46,
+            fontSize: 44,
             fontFamily: 'PixelifySans',
           ),
         ),
@@ -118,117 +112,6 @@ class _MainPageState extends State<MainPage> {
             label: 'Models',
           ),
         ],
-      ),
-    );
-  }
-}
-
-class Search extends StatelessWidget {
-  const Search({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Delulu',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        actions: [
-          // IconButton(
-          //   icon: Icon(Icons.share),
-          //   onPressed: () {
-          //     Share.share('Check out this cool app!');
-          //   },
-          // ),
-          // SizedBox(width: 10),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.account_circle_outlined),
-            iconSize: 34,
-          ),
-          SizedBox(
-            width: 8,
-          )
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 46),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white12),
-                    borderRadius: BorderRadius.circular(6),
-                  ),
-                  child: Column(
-                    children: [
-                      TextField(
-                        minLines: 2,
-                        maxLines: 8,
-                        autocorrect: false,
-                        cursorColor: Colors.white70,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(12),
-                          hintText: 'Ask anything...',
-                          hintStyle: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 0.3,
-                            color: Colors.white24,
-                          ),
-                          border: InputBorder.none,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-                        child: Row(
-                          children: [
-                            TextButton.icon(
-                              onPressed: () {},
-                              style: ButtonStyle(
-                                padding:
-                                    MaterialStatePropertyAll(EdgeInsets.zero),
-                                iconSize: MaterialStatePropertyAll(20),
-                                overlayColor: MaterialStatePropertyAll(
-                                  Colors.transparent,
-                                ),
-                              ),
-                              icon: Icon(Icons.filter_center_focus_rounded),
-                              label: Text("Topic"),
-                            ),
-                            SizedBox(
-                              width: 28,
-                            ),
-                            TextButton.icon(
-                              onPressed: () {},
-                              style: ButtonStyle(
-                                padding:
-                                    MaterialStatePropertyAll(EdgeInsets.zero),
-                                iconSize: MaterialStatePropertyAll(20),
-                                overlayColor: MaterialStatePropertyAll(
-                                  Colors.transparent,
-                                ),
-                              ),
-                              icon: Icon(Icons.add_circle_outline_rounded),
-                              label: Text("Attach"),
-                            ),
-                          ],
-                        ),
-                      ), // Button
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }
