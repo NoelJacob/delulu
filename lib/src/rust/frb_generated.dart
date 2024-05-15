@@ -3,7 +3,7 @@
 
 // ignore_for_file: unused_import, unused_element, unnecessary_import, duplicate_ignore, invalid_use_of_internal_member, annotate_overrides, non_constant_identifier_names, curly_braces_in_flow_control_structures, prefer_const_literals_to_create_immutables, unused_field
 
-import 'api/simple.dart';
+import 'api/main.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'frb_generated.io.dart' if (dart.library.html) 'frb_generated.web.dart';
@@ -56,7 +56,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.0.0-dev.33';
 
   @override
-  int get rustContentHash => -1918914929;
+  int get rustContentHash => -2030337889;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -67,7 +67,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 }
 
 abstract class RustLibApi extends BaseApi {
-  String greet({required String name, dynamic hint});
+  String genUuid({dynamic hint});
 
   Future<void> initApp({dynamic hint});
 }
@@ -81,27 +81,26 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   });
 
   @override
-  String greet({required String name, dynamic hint}) {
+  String genUuid({dynamic hint}) {
     return handler.executeSync(SyncTask(
       callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_String(name, serializer);
         return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 1)!;
       },
       codec: SseCodec(
         decodeSuccessData: sse_decode_String,
         decodeErrorData: null,
       ),
-      constMeta: kGreetConstMeta,
-      argValues: [name],
+      constMeta: kGenUuidConstMeta,
+      argValues: [],
       apiImpl: this,
       hint: hint,
     ));
   }
 
-  TaskConstMeta get kGreetConstMeta => const TaskConstMeta(
-        debugName: "greet",
-        argNames: ["name"],
+  TaskConstMeta get kGenUuidConstMeta => const TaskConstMeta(
+        debugName: "gen_uuid",
+        argNames: [],
       );
 
   @override

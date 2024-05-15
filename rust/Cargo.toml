@@ -8,3 +8,4 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 flutter_rust_bridge = "=2.0.0-dev.33"
+uuid = { version = "1.8.0", features = ["v7", "zerocopy", "fast-rng"] }
