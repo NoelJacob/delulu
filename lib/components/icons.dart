@@ -15,16 +15,22 @@ class TextBoxIcon extends StatelessWidget {
     return TextButton.icon(
       onPressed: () {},
       style: ButtonStyle(
-        padding: MaterialStatePropertyAll(EdgeInsets.zero),
+        padding: MaterialStatePropertyAll(EdgeInsets.fromLTRB(8, 0, 10, 0)),
+        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        )),
         iconSize: MaterialStatePropertyAll(20),
-        overlayColor: MaterialStatePropertyAll(Colors.transparent),
-        foregroundColor: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.hovered)) {
-            return Theme.of(context).colorScheme.onPrimaryContainer;
-          } else {
-            return Theme.of(context).colorScheme.primary;
-          }
-        }),
+        // overlayColor: MaterialStatePropertyAll(Colors.transparent),
+        splashFactory: NoSplash.splashFactory,
+        // foregroundColor: MaterialStateProperty.resolveWith((states) {
+        //   if (states.contains(MaterialState.focused) ||
+        //       states.contains(MaterialState.hovered) ||
+        //       states.contains(MaterialState.pressed)) {
+        //     return Colors.white;
+        //   } else {
+        //     return Theme.of(context).colorScheme.primary;
+        //   }
+        // }),
       ),
       icon: Icon(icon),
       label: Text(label),
