@@ -20,9 +20,9 @@ class TextBoxIcon extends StatelessWidget {
         overlayColor: MaterialStatePropertyAll(Colors.transparent),
         foregroundColor: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.hovered)) {
-            return Theme.of(context).colorScheme.primary;
+            return Theme.of(context).colorScheme.onPrimaryContainer;
           } else {
-            return Colors.white70;
+            return Theme.of(context).colorScheme.primary;
           }
         }),
       ),

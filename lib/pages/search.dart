@@ -82,7 +82,13 @@ class Search extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) {
+                                      return Placeholder();
+                                    }),
+                                  );
+                                },
                                 style: ButtonStyle(
                                   padding:
                                       MaterialStatePropertyAll(EdgeInsets.zero),
