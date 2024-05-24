@@ -1,12 +1,7 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:share_plus/share_plus.dart';
 import '/components/icons.dart';
-import '/components/loading.dart';
 
 class Search extends StatelessWidget {
   const Search({
@@ -15,51 +10,49 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Delulu',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.share),
-            iconSize: 32,
-            onPressed: () {
-              Share.share('Check out this cool app!');
-            },
-          ),
-          SizedBox(width: 10),
-          IconButton(
-            icon: Icon(Icons.account_circle_outlined),
-            iconSize: 32,
-            onPressed: () {},
-          ),
-          SizedBox(
-            width: 8,
-          )
-        ],
-      ),
-      body: ListView(
-        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-        children: [
-          SizedBox(height: 46),
-          SearchBox(),
-          SizedBox(height: 64),
-          // Placeholder(),
-          SizedBox(
-            child: Container(
-              height: 300,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: FileImage(File("/home/noel/Dev/Temp/news/banner.png")),
-                  fit: BoxFit.cover, // Ensures the image covers the container
+    return ListView.builder(
+      padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+      itemBuilder: (BuildContext context, int index) {
+        return [
+          Flex(
+            direction: Axis.horizontal,
+            children: [
+              Text(
+                'Delulu',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.share),
+                      iconSize: 32,
+                      onPressed: () {
+                        Share.share('Check out this cool app!');
+                      },
+                    ),
+                    SizedBox(width: 10),
+                    IconButton(
+                      icon: Icon(Icons.account_circle_outlined),
+                      iconSize: 32,
+                      onPressed: () {},
+                    ),
+                  ],
                 ),
               ),
-            ),
-          )
-        ],
-      ),
+            ],
+          ),
+          SizedBox(height: 64),
+          SearchBox(),
+          SizedBox(height: 64),
+          Placeholder(),
+          SizedBox(height: 64),
+          Placeholder(),
+          // Img()
+          null,
+        ][index];
+      },
     );
   }
 }

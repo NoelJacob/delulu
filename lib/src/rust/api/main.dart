@@ -5,5 +5,49 @@
 
 import '../frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
+import 'package:uuid/uuid.dart';
 
-String genUuid({dynamic hint}) => RustLib.instance.api.genUuid(hint: hint);
+UuidValue createUuid({dynamic hint}) =>
+    RustLib.instance.api.createUuid(hint: hint);
+
+Future<Article> loadArticles({required String page, dynamic hint}) =>
+    RustLib.instance.api.loadArticles(page: page, hint: hint);
+
+class Article {
+  final int id;
+  final String title;
+  final Uint8List image;
+  final String url;
+  final String publisher;
+  final Uint8List publisherFavicon;
+
+  const Article({
+    required this.id,
+    required this.title,
+    required this.image,
+    required this.url,
+    required this.publisher,
+    required this.publisherFavicon,
+  });
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      title.hashCode ^
+      image.hashCode ^
+      url.hashCode ^
+      publisher.hashCode ^
+      publisherFavicon.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Article &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          title == other.title &&
+          image == other.image &&
+          url == other.url &&
+          publisher == other.publisher &&
+          publisherFavicon == other.publisherFavicon;
+}
