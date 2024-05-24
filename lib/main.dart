@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:delulu/src/rust/frb_generated.dart';
-import 'package:delulu/pages/search.dart';
+import '/src/rust/frb_generated.dart';
+import '/pages/search.dart';
 
 Future<void> main() async {
   await RustLib.init();
