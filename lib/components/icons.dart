@@ -15,11 +15,11 @@ class TextBoxIcon extends StatelessWidget {
     return TextButton.icon(
       onPressed: () {},
       style: ButtonStyle(
-        padding: MaterialStatePropertyAll(EdgeInsets.fromLTRB(8, 0, 10, 0)),
-        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+        padding: WidgetStatePropertyAll(EdgeInsets.fromLTRB(8, 0, 10, 0)),
+        shape: WidgetStatePropertyAll(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         )),
-        iconSize: MaterialStatePropertyAll(20),
+        iconSize: WidgetStatePropertyAll(20),
         // overlayColor: MaterialStatePropertyAll(Colors.transparent),
         splashFactory: NoSplash.splashFactory,
         // foregroundColor: MaterialStateProperty.resolveWith((states) {

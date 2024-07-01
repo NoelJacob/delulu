@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
           height: 70,
           indicatorColor: Colors.transparent,
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-          labelTextStyle: MaterialStateProperty.resolveWith(
+          labelTextStyle: WidgetStateProperty.resolveWith(
             (states) {
-              if (states.contains(MaterialState.selected)) {
+              if (states.contains(WidgetState.selected)) {
                 return TextStyle(
                   color: Colors.white,
                   // fontSize: 12,
@@ -46,9 +46,9 @@ class MyApp extends StatelessWidget {
               }
             },
           ),
-          iconTheme: MaterialStateProperty.resolveWith<IconThemeData?>(
-            (Set<MaterialState> states) {
-              if (states.contains(MaterialState.selected)) {
+          iconTheme: WidgetStateProperty.resolveWith<IconThemeData?>(
+            (Set<WidgetState> states) {
+              if (states.contains(WidgetState.selected)) {
                 return IconThemeData(color: Colors.white);
               } else {
                 return IconThemeData(color: Colors.white54);

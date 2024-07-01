@@ -117,13 +117,13 @@ class SearchBox extends StatelessWidget {
                       );
                     },
                     style: ButtonStyle(
-                      padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                      iconSize: MaterialStatePropertyAll(20),
+                      padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                      iconSize: WidgetStatePropertyAll(20),
                       // overlayColor:
                       //     MaterialStatePropertyAll(Colors.transparent),
                       foregroundColor:
-                          MaterialStateProperty.resolveWith((states) {
-                        if (states.contains(MaterialState.hovered)) {
+                          WidgetStateProperty.resolveWith((states) {
+                        if (states.contains(WidgetState.hovered)) {
                           return Theme.of(context)
                               .colorScheme
                               .onPrimaryContainer;
