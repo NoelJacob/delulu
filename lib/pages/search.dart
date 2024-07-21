@@ -13,8 +13,8 @@ class Search extends StatelessWidget {
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
       itemBuilder: (BuildContext context, int index) {
-        return [
-          Flex(
+        if (index == 0) {
+          return Flex(
             direction: Axis.horizontal,
             children: [
               Text(
@@ -42,16 +42,16 @@ class Search extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          SizedBox(height: 64),
-          SearchBox(),
-          SizedBox(height: 64),
-          Placeholder(),
-          SizedBox(height: 64),
-          Placeholder(),
-          // Img()
-          null,
-        ][index];
+          );
+        } else if (index % 2 != 0) {
+          return SizedBox(height: 64);
+        } else if (index == 2) {
+          return SearchBox();
+        } else if (index == 4) {
+          return Placeholder();
+        } else {
+          return null;
+        }
       },
     );
   }
